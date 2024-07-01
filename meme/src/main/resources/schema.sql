@@ -1,0 +1,15 @@
+CREATE SEQUENCE sequence_meme START WITH 1 INCREMENT BY 50;
+
+CREATE TABLE meme (
+  id BIGINT NOT NULL,
+   nome VARCHAR(255) NOT NULL,
+   descricao VARCHAR(255) NOT NULL,
+   data_cadastro date NOT NULL,
+   categoria_id BIGINT,
+   usuario_id BIGINT,
+   CONSTRAINT pk_meme PRIMARY KEY (id)
+);
+
+ALTER TABLE meme ADD CONSTRAINT FK_MEME_ON_CATEGORIA FOREIGN KEY (categoria_id) REFERENCES categoria (id);
+
+ALTER TABLE meme ADD CONSTRAINT FK_MEME_ON_USUARIO FOREIGN KEY (usuario_id) REFERENCES usuario (id);
